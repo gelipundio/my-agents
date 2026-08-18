@@ -62,8 +62,9 @@ Capture a rule here the moment it's established, not later from memory:
 
 Put it in the matching category file using the format above. If you're
 mid-session in another project, just ask the agent: *"add this as a rule
-to my-agents: \<what you want it to remember>"* — it can open this repo
-(by path or by cloning the remote below) and append the entry itself.
+to my-agents: \<what you want it to remember>"* — it can fetch the current
+file from the GitHub URL (see below) and either commit the addition
+directly if it has push access, or hand you the text to add yourself.
 
 Keep rules **global**. If something only makes sense for one specific repo,
 it belongs in that repo's own `CLAUDE.md`, not here.
@@ -84,28 +85,33 @@ project, save it as a file under `prompts/` and add a row above.
 
 ## Using it in a new project
 
-This repo is on GitHub at `git@github.com:gelipundio/my-agents.git`, so you
-can point an agent at it by local path (if cloned alongside your other
-projects) or have it fetch straight from GitHub. Copy-paste one of these:
+This repo is on GitHub at `github.com/gelipundio/my-agents`. No need to
+clone it — point an agent at the raw file URLs directly. Copy-paste one of
+these (base URL: `https://raw.githubusercontent.com/gelipundio/my-agents/main/`):
 
 **Bootstrapping a brand-new project's `CLAUDE.md` / `AGENTS.md`:**
 
-> Read the rule files in `~/projects/gglabs/my-agents/rules/` (or clone
-> `git@github.com:gelipundio/my-agents.git` if it's not local), and follow
-> `rules/_import-strategy.md` for how to merge them into this project's
-> `CLAUDE.md`/`AGENTS.md` — it covers filtering by stack, deduping,
-> resolving contradictions, and keeping the result short.
+> Fetch `https://raw.githubusercontent.com/gelipundio/my-agents/main/README.md`
+> to see the available rule categories, then fetch the ones relevant to this
+> project's stack from
+> `https://raw.githubusercontent.com/gelipundio/my-agents/main/rules/<file>.md`.
+> Follow
+> `https://raw.githubusercontent.com/gelipundio/my-agents/main/rules/_import-strategy.md`
+> for how to merge them into this project's `CLAUDE.md`/`AGENTS.md` — it
+> covers filtering by stack, deduping, resolving contradictions, and
+> keeping the result short.
 
 **Pulling in just a couple of categories:**
 
-> From `~/projects/gglabs/my-agents/rules/`, pull in `git-workflow.md` and
-> `testing.md` into this project's `CLAUDE.md`, following
-> `rules/_import-strategy.md`.
+> Fetch
+> `https://raw.githubusercontent.com/gelipundio/my-agents/main/rules/git-workflow.md`
+> and
+> `https://raw.githubusercontent.com/gelipundio/my-agents/main/rules/testing.md`,
+> and merge them into this project's `CLAUDE.md`, following
+> `https://raw.githubusercontent.com/gelipundio/my-agents/main/rules/_import-strategy.md`.
 
 **Ad hoc, without writing anything down:**
 
-> Before you answer, check `~/projects/gglabs/my-agents/rules/testing.md`
+> Before you answer, fetch
+> `https://raw.githubusercontent.com/gelipundio/my-agents/main/rules/testing.md`
 > for how I like tests structured.
-
-Adjust the path if you clone this repo somewhere other than
-`~/projects/gglabs/my-agents`.
